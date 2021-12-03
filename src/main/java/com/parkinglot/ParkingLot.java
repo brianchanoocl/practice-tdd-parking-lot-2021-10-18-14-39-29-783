@@ -17,7 +17,7 @@ public class ParkingLot {
     }
 
     public Ticket parkCar(Car car) {
-        if(carList.size()+1 > capacity){
+        if(isFull()){
             return null;
         }
         carList.add(car);
@@ -25,14 +25,27 @@ public class ParkingLot {
     }
 
     public Car fetchCar(Ticket ticket) {
-        if(ticket != null && !ticket.isUsed()) {
-            if(carList.contains(ticket.getCar())){
-                ticket.checkOutWithThisTicket();
-                int carParkedPosition = carList.indexOf(ticket.getCar());
-                Car fetchedCar = carList.get(carParkedPosition);
-                carList.remove(carParkedPosition);
-                return fetchedCar;
-            }
+        if(validateTicket(ticket)) {
+            return releaseCarForTicket(ticket);
+        }
+        return null;
+    }
+
+    private boolean isFull(){
+        return carList.size() == capacity;
+    }
+
+    private boolean validateTicket(Ticket ticket){
+        return ticket != null && !ticket.isUsed();
+    }
+
+    private Car releaseCarForTicket(Ticket ticket){
+        if(carList.contains(ticket.getCar())){
+            ticket.checkOutWithThisTicket();
+            int carParkedPosition = carList.indexOf(ticket.getCar());
+            Car fetchedCar = carList.get(carParkedPosition);
+            carList.remove(carParkedPosition);
+            return fetchedCar;
         }
         return null;
     }
