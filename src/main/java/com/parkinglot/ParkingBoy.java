@@ -31,6 +31,12 @@ public class ParkingBoy {
     }
 
     public Car fetchCar(Ticket ticket) {
-        return parkingLots.stream().findFirst().get().fetchCar(ticket);
+        for (ParkingLot parkingLot : parkingLots) {
+            try {
+                return parkingLot.fetchCar(ticket);
+            } catch (UnRecognizedParkingTicketException ignored) {
+            }
+        }
+        return null;
     }
 }

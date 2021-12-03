@@ -70,7 +70,7 @@ public class ParkingBoyTest {
 
     @Test
     void should_return_correct_car_form_2_parking_lots_when_fetch_car_given_parking_boy_with_2_parking_lot_and_both_parking_lot_parked_car_and_2_tickets() {
-        ParkingLot parkingLot1 = new ParkingLot();
+        ParkingLot parkingLot1 = new ParkingLot(1);
         ParkingLot parkingLot2 = new ParkingLot();
         ArrayList<ParkingLot> parkingLots = new ArrayList<ParkingLot>();
         parkingLots.add(parkingLot1);
@@ -87,4 +87,19 @@ public class ParkingBoyTest {
         assertEquals(carFetched1, car1);
         assertEquals(carFetched2, car2);
     }
+
+    /*
+    @Test
+    void should_throw_unrecognized_parking_ticket_exception_when_fetch_car_given_parking_boy_with_2_parking_lot_ticket_is_null() {
+        ParkingLot parkingLot1 = new ParkingLot();
+        ParkingLot parkingLot2 = new ParkingLot();
+        ArrayList<ParkingLot> parkingLots = new ArrayList<ParkingLot>();
+        parkingLots.add(parkingLot1);
+        parkingLots.add(parkingLot2);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+        parkingBoy.parkCar(new Car());
+
+
+    }
+     */
 }
