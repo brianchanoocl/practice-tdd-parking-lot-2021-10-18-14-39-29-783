@@ -9,32 +9,47 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ParkingLotTest {
     @Test
     void should_return_ticket_when_park_car_given_parking_lot_and_car() {
-        ParkingLot parkinLot = new ParkingLot();
+        ParkingLot parkingLot = new ParkingLot();
         Car car = new Car();
 
-        Ticket ticket = parkinLot.parkCar(car);
+        Ticket ticket = parkingLot.parkCar(car);
 
         assertNotNull(ticket);
     }
 
     @Test
     void should_return_null_when_park_car_given_parking_lot_is_full_and_car() {
-        ParkingLot parkinLot = new ParkingLot(0);
+        ParkingLot parkingLot = new ParkingLot(0);
         Car car = new Car();
 
-        Ticket ticket = parkinLot.parkCar(car);
+        Ticket ticket = parkingLot.parkCar(car);
 
         assertNull(ticket);
     }
 
     @Test
     void should_return_car_when_fetch_car_given_parking_lot_and_ticket() {
-        ParkingLot parkinLot = new ParkingLot();
+        ParkingLot parkingLot = new ParkingLot();
         Car car = new Car();
-        Ticket ticket = parkinLot.parkCar(car);
+        Ticket ticket = parkingLot.parkCar(car);
 
-        Car fetchedCar = parkinLot.fetchCar(ticket);
+        Car fetchedCar = parkingLot.fetchCar(ticket);
 
         assertEquals(car, fetchedCar);
+    }
+
+    @Test
+    void should_return_2_correct_car_when_fetch_2_cars_given_parking_lot_and_2_tickets() {
+        ParkingLot parkingLot = new ParkingLot();
+        Car car1 = new Car();
+        Car car2 = new Car();
+        Ticket ticket1 = parkingLot.parkCar(car1);
+        Ticket ticket2 = parkingLot.parkCar(car2);
+
+        Car fetchedCar1 = parkingLot.fetchCar(ticket1);
+        Car fetchedCar2 = parkingLot.fetchCar(ticket2);
+
+        assertEquals(car1, fetchedCar1);
+        assertEquals(car2, fetchedCar2);
     }
 }
