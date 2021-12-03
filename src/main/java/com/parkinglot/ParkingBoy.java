@@ -31,6 +31,6 @@ public class ParkingBoy {
     }
 
     public Car fetchCar(Ticket ticket) {
-        return null;
+        return parkingLots.stream().findFirst().get().fetchCar(ticket);
     }
 }
