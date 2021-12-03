@@ -26,7 +26,7 @@ public class ParkingLot {
 
     public Car fetchCar(Ticket ticket) {
         if(validateTicket(ticket)) {
-            return releaseCarForTicket(ticket);
+            return releaseCarByTicket(ticket);
         }
         return null;
     }
@@ -39,7 +39,7 @@ public class ParkingLot {
         return ticket != null && !ticket.isUsed();
     }
 
-    private Car releaseCarForTicket(Ticket ticket){
+    private Car releaseCarByTicket(Ticket ticket){
         if(carList.contains(ticket.getCar())){
             ticket.checkOutWithThisTicket();
             int carParkedPosition = carList.indexOf(ticket.getCar());
