@@ -1,6 +1,7 @@
 package com.parkinglot;
 
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 
 // [ParkingLot] [Brian] - feat:
 
@@ -17,10 +18,15 @@ public class ParkingBoy {
     }
 
     public Ticket parkCar(Car car) {
-        return parkingLots.stream()
-                .filter(parkingLot -> parkingLot.getAvailablePosition() > 0)
-                .findFirst()
-                .get()
-                .parkCar(car);
+        Ticket returnTicket;
+        try{
+            return parkingLots.stream()
+                    .filter(parkingLot -> parkingLot.getAvailablePosition() > 0)
+                    .findFirst()
+                    .get()
+                    .parkCar(car);
+        } catch (NoSuchElementException e) {
+            throw new NoAvailablePositionException("No available position.");
+        }
     }
 }
