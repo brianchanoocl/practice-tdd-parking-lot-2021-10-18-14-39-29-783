@@ -37,6 +37,6 @@ public class ParkingBoy {
             } catch (UnRecognizedParkingTicketException ignored) {
             }
         }
-        return null;
+        throw new UnRecognizedParkingTicketException("Unrecognized parking ticket.");
     }
 }
