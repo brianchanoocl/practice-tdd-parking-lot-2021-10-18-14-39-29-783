@@ -25,8 +25,9 @@ public class ParkingLot {
     }
 
     public Car fetchCar(Ticket ticket) {
-        if(ticket != null) {
+        if(ticket != null && !ticket.isUsed()) {
             if(carList.contains(ticket.getCar())){
+                ticket.checkOutWithThisTicket();
                 int carParkedPosition = carList.indexOf(ticket.getCar());
                 Car fetchedCar = carList.get(carParkedPosition);
                 carList.remove(carParkedPosition);
