@@ -28,7 +28,7 @@ public class ParkingLot {
         if(validateTicket(ticket)) {
             return releaseCarByTicket(ticket);
         }
-        return null;
+        throw new UnRecognizedParkingTicketException("Unrecognized parking ticket.");
     }
 
     private boolean isFull(){
