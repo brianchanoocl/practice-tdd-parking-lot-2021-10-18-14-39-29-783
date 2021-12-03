@@ -82,20 +82,6 @@ public class ParkingLotTest {
     }
 
     @Test
-    void should_return_null_when_fetch_car_given_parking_lot_and_ticket_is_used() {
-        ParkingLot parkingLot = new ParkingLot();
-        Car car = new Car();
-        Ticket ticket = parkingLot.parkCar(car);
-        parkingLot.parkCar(car);
-
-        parkingLot.fetchCar(ticket);
-        Car fetchedCar = parkingLot.fetchCar(ticket);
-
-        assertNull(fetchedCar);
-    }
-
-//////////////////////
-    @Test
     void should_throw_unrecognized_parking_ticket_exception_when_fetch_car_given_parking_lot_and_ticket_is_used() {
         ParkingLot parkingLot = new ParkingLot();
         Car car = new Car();
