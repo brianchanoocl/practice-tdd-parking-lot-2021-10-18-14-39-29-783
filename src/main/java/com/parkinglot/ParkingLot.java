@@ -1,7 +1,13 @@
 package com.parkinglot;
 
 public class ParkingLot {
+    private final int capacity;
+
+    public ParkingLot() {
+        this.capacity = 10;
+    }
+
     public Ticket parkCar(Car car) {
-        return null;
+        return new Ticket(car);
     }
 }
