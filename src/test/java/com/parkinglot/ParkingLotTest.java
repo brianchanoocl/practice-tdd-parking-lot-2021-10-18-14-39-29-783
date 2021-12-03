@@ -18,13 +18,15 @@ public class ParkingLotTest {
     }
 
     @Test
-    void should_return_null_when_park_car_given_parking_lot_is_full_and_car() {
-        ParkingLot parkingLot = new ParkingLot(0);
+    void should_throw_no_available_position_exception_when_park_car_given_parking_lot_is_full_and_car() {
+        ParkingLot parkingLot = new ParkingLot(1);
+        parkingLot.parkCar(new Car());
         Car car = new Car();
 
-        Ticket ticket = parkingLot.parkCar(car);
-
-        assertNull(ticket);
+        NoAvailablePositionException noAvailablePositionException = assertThrows(NoAvailablePositionException.class, () -> {
+            parkingLot.parkCar(car);
+        });
+        assertEquals("No available position.", noAvailablePositionException.getMessage());
     }
 
     @Test
@@ -88,17 +90,5 @@ public class ParkingLotTest {
         Car fetchedCar = parkingLot.fetchCar(ticket);
 
         assertNull(fetchedCar);
-    }
-
-    @Test
-    void should_throw_no_available_position_exception_when_park_car_given_parking_lot_is_full_and_car() {
-        ParkingLot parkingLot = new ParkingLot(1);
-        parkingLot.parkCar(new Car());
-        Car car = new Car();
-
-        NoAvailablePositionException noAvailablePositionException = assertThrows(NoAvailablePositionException.class, () -> {
-            parkingLot.parkCar(car);
-        });
-        assertEquals("No available position.", noAvailablePositionException.getMessage());
     }
 }
