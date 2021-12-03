@@ -49,4 +49,8 @@ public class ParkingLot {
         }
         throw new UnRecognizedParkingTicketException("Unrecognized parking ticket.");
     }
+
+    public int getAvailablePosition() {
+        return capacity - carList.size();
+    }
 }
