@@ -47,6 +47,6 @@ public class ParkingLot {
             carList.remove(carParkedPosition);
             return fetchedCar;
         }
-        return null;
+        throw new UnRecognizedParkingTicketException("Unrecognized parking ticket.");
     }
 }
