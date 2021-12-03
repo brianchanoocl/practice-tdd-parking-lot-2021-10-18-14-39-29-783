@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-// [ParkingLot] [Brian] - feat:
+// [ParkingLot] [Brian] - feat: 
 
 public class ParkingLotTest {
     @Test
