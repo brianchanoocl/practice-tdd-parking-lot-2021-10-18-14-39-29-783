@@ -29,4 +29,8 @@ public class ParkingBoy {
             throw new NoAvailablePositionException("No available position.");
         }
     }
+
+    public Car fetchCar(Ticket ticket) {
+        return null;
+    }
 }
