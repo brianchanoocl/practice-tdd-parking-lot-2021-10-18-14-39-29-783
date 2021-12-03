@@ -23,4 +23,14 @@ public class ParkingLot {
         carList.add(car);
         return new Ticket(car);
     }
+
+    public Car fetchCar(Ticket ticket) {
+        if(carList.contains(ticket.getCar())){
+            int carParkedPosition = carList.indexOf(ticket.getCar());
+            Car fetchedCar = carList.get(carParkedPosition);
+            carList.remove(carParkedPosition);
+            return fetchedCar;
+        }
+        return null;
+    }
 }
