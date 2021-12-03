@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-// [ParkingLot] [Brian] - feat: 
+// [ParkingLot] [Brian] - feat:
 
 public class ParkingLotTest {
     @Test
@@ -51,5 +51,18 @@ public class ParkingLotTest {
 
         assertEquals(car1, fetchedCar1);
         assertEquals(car2, fetchedCar2);
+    }
+
+    @Test
+    void should_return_nul_when_fetch_car_given_parking_lot_and_ticket_is_for_wrong_car() {
+        ParkingLot parkingLot = new ParkingLot();
+        Car rightCar = new Car();
+        Car wrongCar = new Car();
+        Ticket rightTicket = parkingLot.parkCar(rightCar);
+        Ticket wrongTicket = new Ticket(wrongCar);
+
+        Car fetchedCar = parkingLot.fetchCar(wrongTicket);
+
+        assertNull(fetchedCar);
     }
 }
