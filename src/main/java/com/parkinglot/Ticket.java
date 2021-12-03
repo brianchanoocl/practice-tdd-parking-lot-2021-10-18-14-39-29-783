@@ -7,4 +7,7 @@ public class Ticket {
         this.car = car;
     }
 
+    public Car getCar() {
+        return car;
+    }
 }
