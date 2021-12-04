@@ -5,7 +5,6 @@ import java.util.Comparator;
 import java.util.NoSuchElementException;
 
 public class SmartParkingBoy extends ParkingBoy {
-    private ArrayList<ParkingLot> parkingLots;
 
     public SmartParkingBoy(ParkingLot parkingLot) {
         super(parkingLot);
