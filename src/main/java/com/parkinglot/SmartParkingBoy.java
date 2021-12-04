@@ -4,21 +4,21 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.NoSuchElementException;
 
-public class SmartParkingBoy {
+public class SmartParkingBoy extends ParkingBoy {
     private ArrayList<ParkingLot> parkingLots;
 
     public SmartParkingBoy(ParkingLot parkingLot) {
-        this.parkingLots = new ArrayList<ParkingLot>();
-        this.parkingLots.add(parkingLot);
+        super(parkingLot);
     }
 
     public SmartParkingBoy(ArrayList<ParkingLot> parkingLots) {
-        this.parkingLots = parkingLots;
+        super(parkingLots);
     }
 
+    @Override
     public Ticket parkCar(Car car) {
         try{
-            return parkingLots.stream()
+            return super.getParkingLots().stream()
                     .filter(parkingLot -> parkingLot.getAvailablePosition() > 0)
                     .max(Comparator.comparing(ParkingLot::getAvailablePosition))
                     .get()
@@ -26,15 +26,5 @@ public class SmartParkingBoy {
         } catch (NoSuchElementException e) {
             throw new NoAvailablePositionException("No available position.");
         }
-    }
-
-    public Car fetchCar(Ticket ticket) {
-        for (ParkingLot parkingLot : parkingLots) {
-            try {
-                return parkingLot.fetchCar(ticket);
-            } catch (UnRecognizedParkingTicketException ignored) {
-            }
-        }
-        throw new UnRecognizedParkingTicketException("Unrecognized parking ticket.");
     }
 }

@@ -1,6 +1,7 @@
 package com.parkinglot;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 // [ParkingLot] [Brian] - feat:
@@ -37,5 +38,9 @@ public class ParkingBoy {
             }
         }
         throw new UnRecognizedParkingTicketException("Unrecognized parking ticket.");
+    }
+
+    protected ArrayList<ParkingLot> getParkingLots() {
+        return parkingLots;
     }
 }
