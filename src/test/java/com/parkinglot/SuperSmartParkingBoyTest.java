@@ -59,4 +59,9 @@ public class SuperSmartParkingBoyTest {
         assertEquals(carFetched1, car1);
         assertEquals(carFetched2, car2);
     }
+
+    @Test
+    void should_throw_unrecognized_parking_ticket_exception_when_fetch_car_given_smart_parking_boy_with_2_parking_lot_ticket_is_null(){
+        
+    }
 }
