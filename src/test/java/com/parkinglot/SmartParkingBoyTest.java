@@ -39,4 +39,24 @@ public class SmartParkingBoyTest {
         assertEquals(5, parkingLot1.getAvailablePosition());
         assertEquals(9, parkingLot2.getAvailablePosition());
     }
+
+    @Test
+    void should_return_correct_car_form_2_parking_lots_when_fetch_car_given_smart_parking_boy_with_2_parking_lot_and_both_parking_lot_parked_car_and_2_tickets() {
+        ParkingLot parkingLot1 = new ParkingLot(1);
+        ParkingLot parkingLot2 = new ParkingLot();
+        ArrayList<ParkingLot> parkingLots = new ArrayList<ParkingLot>();
+        parkingLots.add(parkingLot1);
+        parkingLots.add(parkingLot2);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
+        Car car1 = new Car();
+        Car car2 = new Car();
+        Ticket ticket1 = smartParkingBoy.parkCar(car1);
+        Ticket ticket2 = smartParkingBoy.parkCar(car2);
+
+        Car carFetched1 = smartParkingBoy.fetchCar(ticket1);
+        Car carFetched2 = smartParkingBoy.fetchCar(ticket2);
+
+        assertEquals(carFetched1, car1);
+        assertEquals(carFetched2, car2);
+    }
 }
