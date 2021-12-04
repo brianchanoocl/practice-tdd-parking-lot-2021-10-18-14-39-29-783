@@ -1,6 +1,7 @@
 package com.parkinglot;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class SmartParkingBoy {
     private ArrayList<ParkingLot> parkingLots;
@@ -15,6 +16,9 @@ public class SmartParkingBoy {
     }
 
     public Ticket parkCar(Car car) {
-        return parkingLots.stream().findFirst().get().parkCar(car);
+        return parkingLots.stream()
+                .filter(parkingLot -> parkingLot.getAvailablePosition() > 0).max(Comparator.comparing(ParkingLot::getAvailablePosition))
+                .get()
+                .parkCar(car);
     }
 }
