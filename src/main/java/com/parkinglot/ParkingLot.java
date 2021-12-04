@@ -56,7 +56,6 @@ public class ParkingLot {
 
 
     public Double getAvailablePositionRate() {
-        System.out.println("My rate is: " + (double) ((getAvailablePosition()/1.0)  / capacity));
-        return (double) ((getAvailablePosition()/1.0)  / capacity);
+        return (double) ((getAvailablePosition())  / capacity);
     }
 }
