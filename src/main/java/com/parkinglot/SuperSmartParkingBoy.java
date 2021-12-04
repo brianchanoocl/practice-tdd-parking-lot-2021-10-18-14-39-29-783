@@ -14,10 +14,14 @@ public class SuperSmartParkingBoy extends ParkingBoy {
     }
 
     public Ticket parkCar(Car car) {
-        return super.getParkingLots().stream()
-                .filter(parkingLot -> parkingLot.getAvailablePosition() > 0)
-                .max(Comparator.comparing(ParkingLot::getAvailablePositionRate))
-                .get()
-                .parkCar(car);
+        try{
+            return super.getParkingLots().stream()
+                    .filter(parkingLot -> parkingLot.getAvailablePosition() > 0)
+                    .max(Comparator.comparing(ParkingLot::getAvailablePositionRate))
+                    .get()
+                    .parkCar(car);
+        } catch (NoSuchElementException e) {
+            throw new NoAvailablePositionException("No available position.");
+        }
     }
 }
