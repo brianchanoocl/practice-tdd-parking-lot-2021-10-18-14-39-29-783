@@ -31,9 +31,9 @@ public class SuperSmartParkingBoyTest {
         ArrayList<ParkingLot> parkingLots = new ArrayList<ParkingLot>();
         parkingLots.add(parkingLot1);
         parkingLots.add(parkingLot2);
-        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(parkingLots);
 
-        Ticket ticket = smartParkingBoy.parkCar(new Car());
+        Ticket ticket = superSmartParkingBoy.parkCar(new Car());
 
         assertNotNull(ticket);
         assertEquals(9, parkingLot1.getAvailablePosition());
