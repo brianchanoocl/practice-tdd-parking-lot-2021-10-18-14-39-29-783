@@ -15,6 +15,6 @@ public class SmartParkingBoy {
     }
 
     public Ticket parkCar(Car car) {
-        return null;
+        return parkingLots.stream().findFirst().get().parkCar(car);
     }
 }
