@@ -18,7 +18,6 @@ public class ParkingBoy {
     }
 
     public Ticket parkCar(Car car) {
-        Ticket returnTicket;
         try{
             return parkingLots.stream()
                     .filter(parkingLot -> parkingLot.getAvailablePosition() > 0)
