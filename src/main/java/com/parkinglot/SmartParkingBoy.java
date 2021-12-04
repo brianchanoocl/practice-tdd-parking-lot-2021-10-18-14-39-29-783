@@ -23,6 +23,12 @@ public class SmartParkingBoy {
     }
 
     public Car fetchCar(Ticket ticket) {
+        for (ParkingLot parkingLot : parkingLots) {
+            try {
+                return parkingLot.fetchCar(ticket);
+            } catch (UnRecognizedParkingTicketException ignored) {
+            }
+        }
         return null;
     }
 }
