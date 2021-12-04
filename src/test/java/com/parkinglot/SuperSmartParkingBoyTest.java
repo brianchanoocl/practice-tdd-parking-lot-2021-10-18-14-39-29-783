@@ -91,4 +91,22 @@ public class SuperSmartParkingBoyTest {
         });
         assertEquals("Unrecognized parking ticket.", unRecognizedParkingTicketException.getMessage());
     }
+
+    @Test
+    void should_throw_no_available_position_exception_when_park_car_given_super_smart_parking_boy_with_2_parking_lot_and_all_parking_lots_fulled_and_car() {
+        ParkingLot parkingLot1 = new ParkingLot(1);
+        ParkingLot parkingLot2 = new ParkingLot(1);
+        ArrayList<ParkingLot> parkingLots = new ArrayList<ParkingLot>();
+        parkingLots.add(parkingLot1);
+        parkingLots.add(parkingLot2);
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(parkingLots);
+
+        superSmartParkingBoy.parkCar(new Car());
+        superSmartParkingBoy.parkCar(new Car());
+
+        NoAvailablePositionException noAvailablePositionException = assertThrows(NoAvailablePositionException.class, () -> {
+            superSmartParkingBoy.parkCar(new Car());
+        });
+        assertEquals("No available position.", noAvailablePositionException.getMessage());
+    }
 }
