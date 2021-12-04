@@ -120,5 +120,4 @@ public class ParkingBoyTest {
         assertEquals("Unrecognized parking ticket.", unRecognizedParkingTicketException.getMessage());
     }
 
-    //@Test
 }
