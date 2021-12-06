@@ -35,11 +35,13 @@ public class ParkingLot {
         return carList.size() == capacity;
     }
 
-    private boolean validateTicket(Ticket ticket){
-        return ticket != null && !ticket.isUsed();
+    public boolean validateTicket(Ticket ticket){
+        return ticket != null && !ticket.isUsed() && carList.contains(ticket.getCar());
     }
 
-    private Car releaseCarByTicket(Ticket ticket){
+
+
+    private Car releaseCarByTicket(Ticket ticket) {
         if(carList.contains(ticket.getCar())){
             ticket.checkOutWithThisTicket();
             int carParkedPosition = carList.indexOf(ticket.getCar());

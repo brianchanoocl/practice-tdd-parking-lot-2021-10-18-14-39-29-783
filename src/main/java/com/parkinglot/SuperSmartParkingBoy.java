@@ -2,7 +2,6 @@ package com.parkinglot;
 
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.NoSuchElementException;
 
 public class SuperSmartParkingBoy extends ParkingBoy {
     public SuperSmartParkingBoy(ParkingLot parkingLot) {
@@ -14,14 +13,10 @@ public class SuperSmartParkingBoy extends ParkingBoy {
     }
 
     public Ticket parkCar(Car car) {
-        try{
             return super.getParkingLots().stream()
                     .filter(parkingLot -> parkingLot.getAvailablePosition() > 0)
                     .max(Comparator.comparing(ParkingLot::getAvailablePositionRate))
-                    .get()
+                    .orElseThrow(() -> new NoAvailablePositionException("No available position."))
                     .parkCar(car);
-        } catch (NoSuchElementException e) {
-            throw new NoAvailablePositionException("No available position.");
-        }
     }
 }
